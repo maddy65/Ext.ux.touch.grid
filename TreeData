@@ -1,0 +1,72 @@
+var root = {
+            expanded: true,
+            children: [
+                {
+                    text: "Configure Application",
+                    expanded: true,
+                    children: [
+                        {
+                            text: "Manage Application",
+                            leaf: true
+                        },
+                        {
+                            text: "Scenario",
+                            leaf: true
+                        }
+                    ]
+                },
+                {
+                    text: "User Configuration",
+                    expanded: true,
+                    children: [
+                        {
+                            text: "Manage User",
+                            leaf: true
+                        },
+                        {
+                            text: "User rights",
+                            leaf: true
+                        }
+                    ]},
+                {
+                    text: "Test Configuration",
+                    //leaf: true,
+					expanded: true,
+                    children: [
+                        {
+                            text: "Manage User",
+                            leaf: true
+                        },
+                        {
+                            text: "User rights",
+                            leaf: true
+                        }
+                  ]}
+            ]
+        };
+
+Ext.application({
+    name : 'Fiddle',
+
+    launch : function() {
+        Ext.create('Ext.tree.Panel', {
+        useArrows       : true,
+        autoScroll      : false,
+        animate         : true,
+        enableDD        : false,
+        title: 'Configuration',
+        width: 400,
+        height: 400,
+        renderTo: Ext.getBody(),
+        rootVisible: false,
+        store: Ext.create('Ext.data.TreeStore', {
+        root: root
+    }),
+     listeners: {
+        itemclick: function(s,r) {
+                alert(r.data.text);
+        }
+    }
+});
+    }
+});
